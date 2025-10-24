@@ -1,4 +1,4 @@
-# P1 — User Registration (bcrypt)
+# User Registration (for now) (bcrypt)
 
 Small utility to register users with bcrypt-hashed passwords and a simple JSON store.
 

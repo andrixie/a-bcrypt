@@ -1,0 +1,20 @@
+[
+    {
+        "timestamp": "2025-10-24T14:39:00.631183",
+        "user_id": "clar",
+        "event": "login_failed",
+        "reason": "user not found"
+    },
+    {
+        "timestamp": "2025-10-24T14:39:46.781374",
+        "user_id": "1234",
+        "event": "login_success",
+        "reason": ""
+    },
+    {
+        "timestamp": "2025-10-24T14:39:57.993649",
+        "user_id": "555",
+        "event": "login_failed",
+        "reason": "user not found"
+    }
+]
