@@ -42,7 +42,7 @@ def log_event(user_id, event, reason=""):
     logs.append(log_entry)
     with open(AUDIT_FILE, "w") as f:
         json.dump(logs, f, indent=4)
-# ...existing code...
+
 def login_user():
     users = load_users()
     print("=== User Login ===")
