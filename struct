@@ -1,0 +1,7 @@
+Cryptography/
+└── Files/
+    ├── register_bcrypt.py
+    ├── login_bcrypt.py
+    ├── users.json         # can be empty (or deleted; script will recreate)
+    ├── audit_log.txt      # can be empty (or deleted; script will recreate)
+    └── README.md
