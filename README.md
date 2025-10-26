@@ -41,6 +41,7 @@ Regex used (in code):
 
 ## JSON storage formats (examples)
 users.json
+
 {
   "alice": {
     "password_hash": "$2b$12$...bcrypt-hash...",
@@ -55,6 +56,7 @@ users.json
 }
 
 audit_log.json (append-only list)
+
 [
   {
     "timestamp": "2025-10-24T12:34:56.789012",

@@ -1,20 +1,32 @@
 [
     {
-        "timestamp": "2025-10-24T14:39:00.631183",
-        "user_id": "clar",
-        "event": "login_failed",
-        "reason": "user not found"
-    },
-    {
-        "timestamp": "2025-10-24T14:39:46.781374",
-        "user_id": "1234",
+        "timestamp": "2025-10-25T22:21:31.077870",
+        "user_id": "3043",
         "event": "login_success",
         "reason": ""
     },
     {
-        "timestamp": "2025-10-24T14:39:57.993649",
-        "user_id": "555",
-        "event": "login_failed",
-        "reason": "user not found"
+        "timestamp": "2025-10-25T22:23:16.751966",
+        "user_id": "3043",
+        "event": "login_success",
+        "reason": ""
+    },
+    {
+        "timestamp": "2025-10-25T22:23:55.131789",
+        "user_id": "3043",
+        "event": "login_success",
+        "reason": ""
+    },
+    {
+        "timestamp": "2025-10-25T22:25:02.050242",
+        "user_id": "1111",
+        "event": "login_success",
+        "reason": ""
+    },
+    {
+        "timestamp": "2025-10-25T22:27:42.350944",
+        "user_id": "cynthia",
+        "event": "login_success",
+        "reason": ""
     }
 ]
