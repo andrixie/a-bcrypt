@@ -48,3 +48,5 @@
         "reason": ""
     }
 ]{"timestamp": "2025-10-25 22:34:13", "user": "cynthia", "event": "view", "file": "customer_A.txt", "outcome": "allowed", "reason": "Access granted"}
+{"timestamp": "2025-10-25 22:39:51", "user": "1234", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-25 22:40:21", "user": "1234", "event": "login_success", "reason": ""}

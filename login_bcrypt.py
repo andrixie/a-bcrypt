@@ -21,27 +21,14 @@ def load_users():
     return {}
 
 def log_event(user_id, event, reason=""):
-    timestamp = datetime.now().isoformat()
-    log_entry = {
-        "timestamp": timestamp,
-        "user_id": user_id,
+    entry = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "user": user_id,
         "event": event,
         "reason": reason
     }
-
-    logs = []
-    if os.path.exists(AUDIT_FILE):
-        try:
-            with open(AUDIT_FILE, "r") as f:
-                content = f.read()
-                if content.strip():
-                    logs = json.loads(content)
-        except json.JSONDecodeError:
-            logs = []
-
-    logs.append(log_entry)
-    with open(AUDIT_FILE, "w") as f:
-        json.dump(logs, f, indent=4)
+    with open(AUDIT_FILE, "a") as f:
+        f.write(json.dumps(entry) + "\n")
 
 def login_user():
     users = load_users()
