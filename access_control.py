@@ -18,42 +18,36 @@ users = load_users()
 # Role-based permissions
 # -------------------------
 permissions = {
-    # Manager: Full access anytime
     "Manager": {
         "customer_A.txt": {"view": True, "edit": True},
         "customer_B.txt": {"view": True, "edit": True},
         "time_restricted": False
     },
 
-    # Department Manager A: Full access to A only
     "Dept Manager A": {
         "customer_A.txt": {"view": True, "edit": True},
         "customer_B.txt": {"view": False, "edit": False},
         "time_restricted": False
     },
 
-    # Department Manager B: Full access to B only
     "Dept Manager B": {
         "customer_A.txt": {"view": False, "edit": False},
         "customer_B.txt": {"view": True, "edit": True},
         "time_restricted": False
     },
 
-    # Cashier A: View only for A
     "Cashier A": {
         "customer_A.txt": {"view": True, "edit": False},
         "customer_B.txt": {"view": False, "edit": False},
         "time_restricted": False
     },
 
-    # Cashier B: View only for B
     "Cashier B": {
         "customer_A.txt": {"view": False, "edit": False},
         "customer_B.txt": {"view": True, "edit": False},
         "time_restricted": False
     },
 
-    # Day Admin: Full access to both, daytime only
     "Day Admin": {
         "customer_A.txt": {"view": True, "edit": True},
         "customer_B.txt": {"view": True, "edit": True},
@@ -62,7 +56,6 @@ permissions = {
         "end": "12:59:59"
     },
 
-    # Night Admin: Full access to both, nighttime only
     "Night Admin": {
         "customer_A.txt": {"view": True, "edit": True},
         "customer_B.txt": {"view": True, "edit": True},
@@ -90,26 +83,27 @@ def log_event(user, file_name, action, success, reason=""):
         f.write(json.dumps(entry) + "\n")
 
 # -------------------------
-# Time restriction check
+# Time check for admins
 # -------------------------
 def is_time_allowed(role_info):
     if not role_info.get("time_restricted"):
         return True
-
     now = datetime.now().time()
     start = datetime.strptime(role_info["start"], "%H:%M:%S").time()
     end = datetime.strptime(role_info["end"], "%H:%M:%S").time()
-
     if start < end:
         return start <= now <= end
-    else:
-        # Overnight case (e.g., 13:00:00–00:59:59)
+    else:  # overnight range (e.g., 13:00–00:59)
         return now >= start or now <= end
 
 # -------------------------
-# Permission check
+# Access control logic
 # -------------------------
-def can_access(user_role, file_name, action):
+def can_access(user_role, file_name, action, department=None):
+    # Append department letter dynamically for Cashiers and Dept Managers
+    if user_role in ["Cashier", "Dept Manager"] and department:
+        user_role = f"{user_role} {department}"
+
     role_info = permissions.get(user_role)
     if not role_info:
         return False, f"Unknown role: {user_role}"
@@ -126,9 +120,8 @@ def can_access(user_role, file_name, action):
 # -------------------------
 # File operations
 # -------------------------
-def view_file(user, file_name):
-    role = users[user]["role"]
-    allowed, message = can_access(role, file_name, "view")
+def view_file(user, file_name, role, department):
+    allowed, message = can_access(role, file_name, "view", department)
     log_event(user, file_name, "view", allowed, message)
     if allowed:
         try:
@@ -141,9 +134,8 @@ def view_file(user, file_name):
     else:
         print(message)
 
-def edit_file(user, file_name, new_text):
-    role = users[user]["role"]
-    allowed, message = can_access(role, file_name, "edit")
+def edit_file(user, file_name, new_text, role, department):
+    allowed, message = can_access(role, file_name, "edit", department)
     log_event(user, file_name, "edit", allowed, message)
     if allowed:
         with open(file_name, "a") as f:
@@ -155,29 +147,30 @@ def edit_file(user, file_name, new_text):
 # -------------------------
 # Main interface
 # -------------------------
-def main_interface(user):
-    role = users[user]["role"]
-    print(f"\nWelcome {user} ({role})!\n")
+def main_interface(user, role, department):
+    print(f"\nWelcome {user} ({role} - Department {department})!\n")
 
     while True:
         options = []
         menu_map = {}
 
-        # Customer A
-        if can_access(role, "customer_A.txt", "view")[0]:
+        # customer_A.txt
+        if can_access(role, "customer_A.txt", "view", department)[0]:
             options.append("1. View customer_A.txt")
-            menu_map["1"] = lambda: view_file(user, "customer_A.txt")
-        if can_access(role, "customer_A.txt", "edit")[0]:
-            options.append("2. Edit customer_A.txt")
-            menu_map["2"] = lambda: edit_file(user, "customer_A.txt", input("Enter text: "))
+            menu_map["1"] = lambda: view_file(user, "customer_A.txt", role, department)
 
-        # Customer B
-        if can_access(role, "customer_B.txt", "view")[0]:
+        if can_access(role, "customer_A.txt", "edit", department)[0]:
+            options.append("2. Edit customer_A.txt")
+            menu_map["2"] = lambda: edit_file(user, "customer_A.txt", input("Enter text: "), role, department)
+
+        # customer_B.txt
+        if can_access(role, "customer_B.txt", "view", department)[0]:
             options.append("3. View customer_B.txt")
-            menu_map["3"] = lambda: view_file(user, "customer_B.txt")
-        if can_access(role, "customer_B.txt", "edit")[0]:
+            menu_map["3"] = lambda: view_file(user, "customer_B.txt", role, department)
+
+        if can_access(role, "customer_B.txt", "edit", department)[0]:
             options.append("4. Edit customer_B.txt")
-            menu_map["4"] = lambda: edit_file(user, "customer_B.txt", input("Enter text: "))
+            menu_map["4"] = lambda: edit_file(user, "customer_B.txt", input("Enter text: "), role, department)
 
         # Logout
         options.append("5. Logout")
@@ -205,4 +198,4 @@ if __name__ == "__main__":
         username = user_info["username"]
         role = user_info["data"]["role"]
         department = user_info["data"]["department"]
-        main_interface(username)
+        main_interface(username, role, department)
