@@ -55,7 +55,7 @@ def login_user():
     if bcrypt.checkpw(password_input.encode(), stored_hash):
         log_event(matched_user_id, "login_success")
         print(f"Login successful! Welcome, {matched_user_id}.")
-        # ✅ Return structure expected by access_control.py
+        #Return structure expected by access_control.py
         return {
             "username": matched_user_id,
             "data": user_record
