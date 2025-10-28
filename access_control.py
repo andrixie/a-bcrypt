@@ -79,9 +79,9 @@ def log_event(user, file_name, action, success, reason=""):
         "outcome": "allowed" if success else "denied",
         "reason": reason
     }
+    # append each event as a JSON line
     with open(AUDIT_FILE, "a") as f:
         f.write(json.dumps(entry) + "\n")
-
 # -------------------------
 # Time check for admins
 # -------------------------
@@ -156,27 +156,27 @@ def main_interface(user, role, department):
 
         # customer_A.txt
         if can_access(role, "customer_A.txt", "view", department)[0]:
-            options.append("1. View customer_A.txt")
+            options.append("(1) View customer_A.txt")
             menu_map["1"] = lambda: view_file(user, "customer_A.txt", role, department)
 
         if can_access(role, "customer_A.txt", "edit", department)[0]:
-            options.append("2. Edit customer_A.txt")
+            options.append("(2) Edit customer_A.txt")
             menu_map["2"] = lambda: edit_file(user, "customer_A.txt", input("Enter text: "), role, department)
 
         # customer_B.txt
         if can_access(role, "customer_B.txt", "view", department)[0]:
-            options.append("3. View customer_B.txt")
+            options.append("(3) View customer_B.txt")
             menu_map["3"] = lambda: view_file(user, "customer_B.txt", role, department)
 
         if can_access(role, "customer_B.txt", "edit", department)[0]:
-            options.append("4. Edit customer_B.txt")
+            options.append("(4) Edit customer_B.txt")
             menu_map["4"] = lambda: edit_file(user, "customer_B.txt", input("Enter text: "), role, department)
 
         # Logout
-        options.append("5. Logout")
+        options.append("(5) Logout")
         menu_map["5"] = lambda: "logout"
 
-        print("\nChoose an action:")
+        print("\nChoose an action (enter the number):")
         for opt in options:
             print(opt)
 

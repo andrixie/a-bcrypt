@@ -1,52 +1,9 @@
 [
     {
-        "timestamp": "2025-10-25T22:21:31.077870",
-        "user_id": "3043",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:23:16.751966",
-        "user_id": "3043",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:23:55.131789",
-        "user_id": "3043",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:25:02.050242",
-        "user_id": "1111",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:27:42.350944",
-        "user_id": "cynthia",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:31:34.420985",
+        "timestamp": "2025-10-25T22:17:36.994712",
         "user_id": "1234",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:33:32.043307",
-        "user_id": "1234",
-        "event": "login_success",
-        "reason": ""
-    },
-    {
-        "timestamp": "2025-10-25T22:34:10.047901",
-        "user_id": "cynthia",
         "event": "login_success",
         "reason": ""
     }
-]{"timestamp": "2025-10-25 22:34:13", "user": "cynthia", "event": "view", "file": "customer_A.txt", "outcome": "allowed", "reason": "Access granted"}
-{"timestamp": "2025-10-25 22:39:51", "user": "1234", "event": "login_success", "reason": ""}
-{"timestamp": "2025-10-25 22:40:21", "user": "1234", "event": "login_success", "reason": ""}
+]{"timestamp": "2025-10-25 23:04:51", "user": "1234", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-25 23:05:08", "user": "1234", "event": "edit", "file": "customer_B.txt", "outcome": "allowed", "reason": "Access granted"}
