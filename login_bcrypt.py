@@ -1,4 +1,7 @@
-# login_bcrypt.py
+#SYSC 4810 Network and System Security
+#Name: Andrea Taguinod (101257535)
+#Date: October 27, 2025
+#Description: User login module with bcrypt password hashing and audit logging.
 
 import bcrypt
 import json
@@ -67,3 +70,6 @@ def login_user():
 
 if __name__ == "__main__":
     login_user()
+
+
+P1->SEL0 &=  

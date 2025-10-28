@@ -1,4 +1,7 @@
-# register_bcrypt.py
+#SYSC 4810 Network and System Security
+#Name: Andrea Taguinod (101257535)
+#Date: October 27, 2025
+#Description: User registration module with bcrypt password hashing and password policy enforcement.
 
 import bcrypt
 import json
@@ -60,7 +63,7 @@ def register_user():
             )
             continue
 
-        role = input("Enter role (e.g., Manager, Cashier, DeptManager): ").strip()
+        role = input("Enter role your role (Manager, Cashier, DeptManager, Day/Night Admin): ").strip()
         department = input("Enter department (A or B): ").strip().upper()
         if department not in ["A", "B"]:
             print("Invalid department. Must be 'A' or 'B'.")

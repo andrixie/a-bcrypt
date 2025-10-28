@@ -1,11 +1,4 @@
-[
-    {
-        "timestamp": "2025-10-25T22:17:36.994712",
-        "user_id": "1234",
-        "event": "login_success",
-        "reason": ""
-    }
-]{"timestamp": "2025-10-25 23:04:51", "user": "1234", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-25 23:04:51", "user": "1234", "event": "login_success", "reason": ""}
 {"timestamp": "2025-10-25 23:05:08", "user": "1234", "event": "edit", "file": "customer_B.txt", "outcome": "allowed", "reason": "Access granted"}
 {"timestamp": "2025-10-27 22:40:33", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
 {"timestamp": "2025-10-27 22:40:53", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
@@ -14,3 +7,8 @@
 {"timestamp": "2025-10-27 22:44:20", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
 {"timestamp": "2025-10-27 22:45:14", "user": "Andrea", "event": "login_success", "reason": ""}
 {"timestamp": "2025-10-27 22:45:55", "user": "Andrea", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 22:54:54", "user": "Andrea", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 22:56:28", "user": "AAAA", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 22:57:22", "user": "0", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 23:00:40", "user": "0", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 23:17:44", "user": "0", "event": "login_success", "reason": ""}

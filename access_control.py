@@ -1,3 +1,8 @@
+#SYSC 4810 Network and System Security
+#Name: Andrea Taguinod (101257535)
+#Date: October 27, 2025
+#Description: Access control module with role-based permissions, time restrictions, and audit logging.
+
 import json
 from datetime import datetime
 import os
