@@ -7,3 +7,10 @@
     }
 ]{"timestamp": "2025-10-25 23:04:51", "user": "1234", "event": "login_success", "reason": ""}
 {"timestamp": "2025-10-25 23:05:08", "user": "1234", "event": "edit", "file": "customer_B.txt", "outcome": "allowed", "reason": "Access granted"}
+{"timestamp": "2025-10-27 22:40:33", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
+{"timestamp": "2025-10-27 22:40:53", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
+{"timestamp": "2025-10-27 22:41:03", "user": "andrea$2", "event": "login_failed", "reason": "user not found"}
+{"timestamp": "2025-10-27 22:41:11", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
+{"timestamp": "2025-10-27 22:44:20", "user": "1234", "event": "login_failed", "reason": "incorrect password"}
+{"timestamp": "2025-10-27 22:45:14", "user": "Andrea", "event": "login_success", "reason": ""}
+{"timestamp": "2025-10-27 22:45:55", "user": "Andrea", "event": "login_success", "reason": ""}
