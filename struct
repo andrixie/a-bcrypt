@@ -1,8 +1,12 @@
-Cryptography/
-└── Files/
+Assignment2_SYSC4810/
+└── a-bcrypt/
     ├── register_bcrypt.py
     ├── login_bcrypt.py
     ├── users.json         # can be empty (or deleted; script will recreate)
     ├── audit_log.txt      # can be empty (or deleted; script will recreate)
     └── README.md
     └── access_control.py
+    └── _pycache_
+    └── venv 
+    └── customer_A.txt (department A)
+    └── customer_B.txt (department B)
